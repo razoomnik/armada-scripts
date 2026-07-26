@@ -1,0 +1,4 @@
+*.log
+*.tmp
+.DS_Store
+odin3-gyro-recovery/
