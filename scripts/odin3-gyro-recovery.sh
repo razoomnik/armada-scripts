@@ -21,7 +21,7 @@
 set -Eeuo pipefail
 IFS=$'\n\t'
 
-SCRIPT_VERSION="1.0.0"
+SCRIPT_VERSION="1.0.1"
 WORK_ROOT="${ODIN3_GYRO_WORKDIR:-$HOME/odin3-gyro-recovery}"
 FORCE_REBUILD=0
 MODE="install"
@@ -474,6 +474,7 @@ CONTAINER
 
     sudo podman run --rm \
         --pull=never \
+        --network=host \
         --platform linux/aarch64 \
         -v "$kernel_dir:/work:Z" \
         -v "$build_cache:/kernel-work:Z" \
@@ -612,6 +613,7 @@ CONTAINER
 
     sudo podman run --rm \
         --pull=never \
+        --network=host \
         --platform linux/aarch64 \
         -v "$package_dir:/package:ro,Z" \
         -v "$fastrpc_dir:/fastrpc:Z" \
